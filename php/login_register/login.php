@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($user['id_rol'] == 1) {
                 header('Location: ../dasboard.php');
             } elseif ($user['id_rol'] == 2) {
-                header('Location: ../cuestionario.php');
+                header('Location: ../../views/index.php');
             }
             exit;
         } else {
