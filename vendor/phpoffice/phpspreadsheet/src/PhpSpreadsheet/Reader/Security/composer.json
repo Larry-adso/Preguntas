@@ -1,0 +1,9 @@
+{
+    "name": "larrygarcia/security",
+    "autoload": {
+        "psr-4": {
+            "Larrygarcia\\Security\\": "src/"
+        }
+    },
+    "require": {}
+}
