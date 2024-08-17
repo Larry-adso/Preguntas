@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Redirigir según el id_rol
             if ($user['id_rol'] == 1) {
-                header('Location: ../dasboard.php');
+                header('Location: ../admin/dasboard.php');
             } elseif ($user['id_rol'] == 2) {
                 header('Location: ../../views/index.php');
             }

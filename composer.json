@@ -1,0 +1,13 @@
+{
+    "name": "larrygarcia/preguntas",
+    "autoload": {
+        "psr-4": {
+            "Larrygarcia\\Preguntas\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.12",
+        "phpmailer/phpmailer": "^6.9",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

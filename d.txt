@@ -1,0 +1,286 @@
+Last login: Fri Aug 16 16:01:43 on ttys004
+iMac-de-HDCO:~ larrygarcia$ sudo nano /Applications/XAMPP/xamppfiles/etc/php.ini
+Password:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  GNU nano 2.0.6                             File: /Applications/XAMPP/xamppfiles/etc/php.ini                                                                
+
+
+; http://php.net/exif.decode-jis-motorola
+;exif.decode_jis_motorola = JIS
+
+; http://php.net/exif.decode-jis-intel
+;exif.decode_jis_intel    = JIS
+
+[Tidy]
+; The path to a default tidy configuration file to use when using tidy
+; http://php.net/tidy.default-config
+;tidy.default_config = /usr/local/lib/php/default.tcfg
+
+; Should tidy clean and repair output automatically?
+; WARNING: Do not use this option if you are generating non-html content
+; such as dynamic images
+; http://php.net/tidy.clean-output
+tidy.clean_output=Off
+
+[soap]
+; Enables or disables WSDL caching feature.
+; http://php.net/soap.wsdl-cache-enabled
+soap.wsdl_cache_enabled=1
+
+; Sets the directory name where SOAP extension will put cache files.
+; http://php.net/soap.wsdl-cache-dir
+soap.wsdl_cache_dir="/tmp"
+
+; (time to live) Sets the number of second while cached file will be used
+; instead of original one.
+; http://php.net/soap.wsdl-cache-ttl
+soap.wsdl_cache_ttl=86400
+
+; Sets the size of the cache limit. (Max. number of WSDL files to cache)
+soap.wsdl_cache_limit=5
+
+[sysvshm]
+; A default size of the shared memory segment
+;sysvshm.init_mem = 10000
+
+[ldap]
+; Sets the maximum number of open links or -1 for unlimited.
+ldap.max_links=-1
+
+[mcrypt]
+; For more information about mcrypt settings see http://php.net/mcrypt-module-open
+
+; Directory where to load mcrypt algorithms
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.algorithms_dir=
+
+; Directory where to load mcrypt modes
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.modes_dir=
+
+[dba]
+;dba.default_handler=
+
+[opcache]
+;zend_extension=opcache.so
+
+openssl.cafile=/Applications/XAMPP/xamppfiles/share/curl/curl-ca-bundle.crt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  GNU nano 2.0.6                             File: /Applications/XAMPP/xamppfiles/etc/php.ini                                                                
+
+
+; http://php.net/exif.decode-jis-motorola
+;exif.decode_jis_motorola = JIS
+
+; http://php.net/exif.decode-jis-intel
+;exif.decode_jis_intel    = JIS
+
+[Tidy]
+; The path to a default tidy configuration file to use when using tidy
+; http://php.net/tidy.default-config
+;tidy.default_config = /usr/local/lib/php/default.tcfg
+
+; Should tidy clean and repair output automatically?
+; WARNING: Do not use this option if you are generating non-html content
+; such as dynamic images
+; http://php.net/tidy.clean-output
+tidy.clean_output=Off
+
+[soap]
+; Enables or disables WSDL caching feature.
+; http://php.net/soap.wsdl-cache-enabled
+soap.wsdl_cache_enabled=1
+
+; Sets the directory name where SOAP extension will put cache files.
+; http://php.net/soap.wsdl-cache-dir
+soap.wsdl_cache_dir="/tmp"
+
+; (time to live) Sets the number of second while cached file will be used
+; instead of original one.
+; http://php.net/soap.wsdl-cache-ttl
+soap.wsdl_cache_ttl=86400
+
+; Sets the size of the cache limit. (Max. number of WSDL files to cache)
+soap.wsdl_cache_limit=5
+
+[sysvshm]
+; A default size of the shared memory segment
+;sysvshm.init_mem = 10000
+
+[ldap]
+; Sets the maximum number of open links or -1 for unlimited.
+ldap.max_links=-1
+
+[mcrypt]
+; For more information about mcrypt settings see http://php.net/mcrypt-module-open
+
+; Directory where to load mcrypt algorithms
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.algorithms_dir=
+
+; Directory where to load mcrypt modes
+; Default: Compiled in into libmcrypt (usually /usr/local/lib/libmcrypt)
+;mcrypt.modes_dir=
+
+[dba]
+;dba.default_handler=
+
+[opcache]
+;zend_extension=opcache.so
+
+openssl.cafile=/Applications/XAMPP/xamppfiles/share/curl/curl-ca-bundle.crt
+

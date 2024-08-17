@@ -1,0 +1,51 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del nav */
+nav {
+    background-color: #FF5722; /* Cambia el fondo para que coincida con el color de la parte superior de la captura */
+    padding: 10px;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap; /* Asegura que los elementos estén en una sola fila */
+}
+
+.nav-list li {
+    margin: 0;
+}
+
+.nav-list a {
+    color: #fff; /* Cambia el color del texto a blanco */
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s;
+    background-color: #FF5722; /* Cambia el color de fondo para que coincida con los botones */
+    border-radius: 4px; /* Da un poco de redondeo a los bordes */
+}
+
+.nav-list a:hover {
+    background-color: #E64A19; /* Un tono más oscuro para el efecto hover */
+}
+
+/* Adaptabilidad del nav */
+@media (max-width: 768px) {
+    .nav-list {
+        justify-content: space-between; /* Ajusta el espacio entre los elementos en pantallas pequeñas */
+    }
+    
+    .nav-list a {
+        padding: 8px 15px; /* Ajuste del padding para que quepa mejor en pantallas pequeñas */
+    }
+}
