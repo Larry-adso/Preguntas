@@ -1,0 +1,76 @@
+/* ../../css/dashboard.css */
+
+/* Colores personalizados */
+:root {
+    --verde: #00d1b2;
+    --naranja: #F37720;
+    --gris: #738185;
+    --blanco: rgb(255, 255, 255);
+}
+
+/* Estilo para el navbar */
+.navbar {
+    background-color: var(--blanco);
+}
+
+.navbar .nav-link {
+    color: rgb(2, 2, 2);
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: var(--gris);
+    color: white;
+}
+
+/* Estilo para botones */
+.btn-custom {   
+    background-color: var(--verde);
+    color: rgb(221, 13, 13);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: var(--gris);
+}
+
+/* Estilo de la tabla */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-bordered th,
+.table-bordered td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table th {
+    background-color: var(--naranja);
+    color: white;
+}
+
+.table td {
+    color: var(--gris);
+}
+
+/* Estilo para la alerta de eliminación */
+.alerta-eliminar {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilo para pantallas móviles */
+@media (max-width: 768px) {
+    .table-responsive {
+        margin-bottom: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+}
+.navbar-toggler {
+    background-color: var(--naranja);
+}

@@ -27,7 +27,7 @@ body {
   height: auto;
 }
 
-.logout-btn {
+#logout-btn {
   background-color: rgb(237, 93, 26);
   color: white;
   border: none;
@@ -37,7 +37,7 @@ body {
   font-size: 16px;
 }
 
-.logout-btn:hover {
+#logout-btn:hover {
   background-color: rgb(238, 224, 218);
 }
 
@@ -133,7 +133,7 @@ body {
     max-width: 120px;
   }
 
-  .logout-btn {
+  #logout-btn {
     font-size: 14px;
     padding: 8px 16px;
   }

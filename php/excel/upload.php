@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+ob_start(); // Inicia el almacenamiento en buffer
+
 require '../../conexion/conexion.php';
 require '../../vendor/autoload.php';
 
@@ -69,6 +71,9 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
         }
 
         echo "El archivo se ha procesado correctamente.";
+        header('Location: ../admin/dasboard.php');
+        exit; // Asegura que el script se detenga después de la redirección
+
     } catch (Exception $e) {
         echo "Error al procesar el archivo: " . $e->getMessage();
     }
@@ -76,7 +81,5 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
     echo "Error al subir el archivo.";
 }
 
-
-
+ob_end_flush(); // Envía la salida almacenada
 ?>
-

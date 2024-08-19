@@ -36,7 +36,7 @@ $certificaciones_id = 4;
       <a href="../php/excel/subir.php" class="u-logo">
         <img src="../img/logo.png" class="logo">
       </a>
-      <a style="text-decoration: none;" href="../php/login_register/cerrar.php" class="logout-btn">Cerrar Sesión</a>
+      <a style="text-decoration: none;" href="../php/login_register/cerrar.php" id="logout-btn" class="fas fa-sign-out-alt">  Cerrar Sesión</a>
     </div>
   </header>
 
@@ -89,6 +89,10 @@ $certificaciones_id = 4;
 
     </div>
   </section>
+
+  <?php  
+  include "../includes/footer.php";
+  ?>
 
 </body>
 

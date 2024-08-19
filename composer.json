@@ -1,13 +1,19 @@
 {
-    "name": "larrygarcia/preguntas",
+    "name": "laxkydev/preguntas-1",
+    "type": "project",
     "autoload": {
         "psr-4": {
-            "Larrygarcia\\Preguntas\\": "src/"
+            "Laxkydev\\Preguntas1\\": "src/"
         }
     },
+    "authors": [
+        {
+            "name": "y"
+        }
+    ],
     "require": {
-        "phpoffice/phpspreadsheet": "^1.12",
         "phpmailer/phpmailer": "^6.9",
-        "vlucas/phpdotenv": "^5.5"
+        "phpoffice/phpspreadsheet": "^2.2",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

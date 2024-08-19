@@ -3,98 +3,43 @@
 namespace PhpOffice\PhpSpreadsheet\Reader\Security;
 
 use PhpOffice\PhpSpreadsheet\Reader;
-use PhpOffice\PhpSpreadsheet\Settings;
 
 class XmlScanner
 {
-    private $pattern;
+    private string $pattern;
 
+    /** @var ?callable */
     private $callback;
 
-    private static $libxmlDisableEntityLoaderValue;
-
-    public function __construct($pattern = '<!DOCTYPE')
+    public function __construct(string $pattern = '<!DOCTYPE')
     {
         $this->pattern = $pattern;
-
-        $this->disableEntityLoaderCheck();
-
-        register_shutdown_function([__CLASS__, 'shutdown']);
     }
 
-    public static function getInstance(Reader\IReader $reader)
+    public static function getInstance(Reader\IReader $reader): self
     {
-        switch (true) {
-            case $reader instanceof Reader\Html:
-                return new self('<!ENTITY');
-            case $reader instanceof Reader\Xlsx:
-            case $reader instanceof Reader\Xml:
-            case $reader instanceof Reader\Ods:
-            case $reader instanceof Reader\Gnumeric:
-                return new self('<!DOCTYPE');
-            default:
-                return new self('<!DOCTYPE');
-        }
+        $pattern = ($reader instanceof Reader\Html) ? '<!ENTITY' : '<!DOCTYPE';
+
+        return new self($pattern);
     }
 
-    public static function threadSafeLibxmlDisableEntityLoaderAvailability()
-    {
-        if (PHP_MAJOR_VERSION == 7) {
-            switch (PHP_MINOR_VERSION) {
-                case 2:
-                    return PHP_RELEASE_VERSION >= 1;
-                case 1:
-                    return PHP_RELEASE_VERSION >= 13;
-                case 0:
-                    return PHP_RELEASE_VERSION >= 27;
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    private function disableEntityLoaderCheck()
-    {
-        if (PHP_VERSION_ID < 80000 && Settings::getLibXmlDisableEntityLoader()) {
-            $libxmlDisableEntityLoaderValue = libxml_disable_entity_loader(true);
-
-            if (self::$libxmlDisableEntityLoaderValue === null) {
-                self::$libxmlDisableEntityLoaderValue = $libxmlDisableEntityLoaderValue;
-            }
-        }
-    }
-
-    public static function shutdown()
-    {
-        if (PHP_VERSION_ID < 80000 && self::$libxmlDisableEntityLoaderValue !== null) {
-            libxml_disable_entity_loader(self::$libxmlDisableEntityLoaderValue);
-            self::$libxmlDisableEntityLoaderValue = null;
-        }
-    }
-
-    public function __destruct()
-    {
-        self::shutdown();
-    }
-
-    public function setAdditionalCallback(callable $callback)
+    public function setAdditionalCallback(callable $callback): void
     {
         $this->callback = $callback;
     }
 
-    private function toUtf8($xml)
+    private static function forceString(mixed $arg): string
     {
-        $pattern = '/encoding="(.*?)"/';
-        $result = preg_match($pattern, $xml, $matches);
-        $charset = strtoupper($result ? $matches[1] : 'UTF-8');
+        return is_string($arg) ? $arg : '';
+    }
 
+    private function toUtf8(string $xml): string
+    {
+        $charset = $this->findCharSet($xml);
         if ($charset !== 'UTF-8') {
-            $xml = mb_convert_encoding($xml, 'UTF-8', $charset);
+            $xml = self::forceString(mb_convert_encoding($xml, 'UTF-8', $charset));
 
-            $result = preg_match($pattern, $xml, $matches);
-            $charset = strtoupper($result ? $matches[1] : 'UTF-8');
+            $charset = $this->findCharSet($xml);
             if ($charset !== 'UTF-8') {
                 throw new Reader\Exception('Suspicious Double-encoded XML, spreadsheet file load() aborted to prevent XXE/XEE attacks');
             }
@@ -103,26 +48,51 @@ class XmlScanner
         return $xml;
     }
 
-    public function scan($xml)
+    private function findCharSet(string $xml): string
     {
-        $this->disableEntityLoaderCheck();
+        $patterns = [
+            '/encoding="([^"]*]?)"/',
+            "/encoding='([^']*?)'/",
+        ];
+
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $xml, $matches)) {
+                return strtoupper($matches[1]);
+            }
+        }
+
+        return 'UTF-8';
+    }
+
+    /**
+     * Scan the XML for use of <!ENTITY to prevent XXE/XEE attacks.
+     *
+     * @param false|string $xml
+     */
+    public function scan($xml): string
+    {
+        $xml = "$xml";
 
         $xml = $this->toUtf8($xml);
 
+        // Don't rely purely on libxml_disable_entity_loader()
         $pattern = '/\\0?' . implode('\\0?', str_split($this->pattern)) . '\\0?/';
 
         if (preg_match($pattern, $xml)) {
             throw new Reader\Exception('Detected use of ENTITY in XML, spreadsheet file load() aborted to prevent XXE/XEE attacks');
         }
 
-        if ($this->callback !== null && is_callable($this->callback)) {
+        if ($this->callback !== null) {
             $xml = call_user_func($this->callback, $xml);
         }
 
         return $xml;
     }
 
-    public function scanFile($filestream)
+    /**
+     * Scan theXML for use of <!ENTITY to prevent XXE/XEE attacks.
+     */
+    public function scanFile(string $filestream): string
     {
         return $this->scan(file_get_contents($filestream));
     }

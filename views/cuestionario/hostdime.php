@@ -39,6 +39,8 @@ if ($id_clasificacion !== null && is_numeric($id_clasificacion)) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/styles.css">
   <script src="../../js/script.js" defer></script>
@@ -51,7 +53,7 @@ if ($id_clasificacion !== null && is_numeric($id_clasificacion)) {
       <a href="../index.php" class="u-logo">
         <img src="../../img/logo.png" class="logo">
       </a>
-      <a style="text-decoration: none;" href="../../php/login_register/cerrar.php" class="logout-btn">Cerrar Sesión</a>
+      <a style="text-decoration: none;" href="../../php/login_register/cerrar.php" id="logout-btn" class="fas fa-sign-out-alt">  Cerrar Sesión</a>
     </div>
   </header>
 <?php 
@@ -88,7 +90,9 @@ include "nav.php";
 
     </div>
   </section>
-
+  <?php  
+  include "../../includes/footer.php";
+  ?>
 </body>
 
 </html>
