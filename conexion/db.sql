@@ -94,7 +94,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `correo`, `password`, `nombre`, `id_rol`, `tp_password`) VALUES
-(1109000596, 'larry.g@hostdime.co', 'F0Y5TWyUQaL4gs9VIOuGxWgxTzdvMjViOG9Qd3I1ZUFQSm9idFE9PQ==', 'Admin', 1, 1);
+(1109000596, 'larry.g@hostdime.co', 'F0Y5TWyUQaL4gs9VIOuGxWgxTzdvMjViOG9Qd3I1ZUFQSmgit c9idFE9PQ==', 'Admin', 1, 1);
 
 --
 -- Índices para tablas volcadas
