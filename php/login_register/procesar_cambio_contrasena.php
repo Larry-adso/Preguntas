@@ -1,4 +1,17 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['correo'])) {
+  echo '
+    <script>
+        alert("Por favor inicie sesión e intente nuevamente");
+        window.location = "../../index.php";
+    </script>
+    ';
+  session_destroy();
+  die();
+}
 include("../../conexion/conexion.php");
 include("../../includes/alertas.php");
 
